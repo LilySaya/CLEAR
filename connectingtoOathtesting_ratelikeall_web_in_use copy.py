@@ -12,14 +12,14 @@ SCOPES = [
 
 @app.route('/')
 def index():
-    return render_template('submit.html')
+    return render_template('submit_template.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
     # Handle form data
     keywords = request.form['query']  # e.g., "rick, summer, morty"
-    num_videos = 3
-    # num_videos = int(request.form['num_videos'])
+    # num_videos = 1
+    num_videos = int(request.form['num_videos'])
     
     # Split keywords by commas and strip whitespace
     keyword_list = [keyword.strip() for keyword in keywords.split(',')]
@@ -36,6 +36,7 @@ def submit():
                 like_video(creds, video_id)
     
     return f"Search for keywords '{', '.join(keyword_list)}' completed, and all found videos have been liked!"
+
 
 
 def authenticate():
