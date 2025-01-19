@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='globals_page2.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleguide_page2.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_page2.css') }}" />
+    <!--
+    <link rel="stylesheet" href="globals_page2.css" />
+    <link rel="stylesheet" href="styleguide_page2.css" />
+    <link rel="stylesheet" href="style_page2.css" />
+    -->
+  </head>
+  <body>
+    <div class="form-container">
+      <form action="/options" method="POST">
+        <div class="imac">
+          <div class="div">
+            <div class="overlap-group">
+              <img
+                class="contact-us"
+                src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/contact-us.png"
+              />
+              <img
+                class="check-my-feed"
+                src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/check-my-feed.png"
+              />
+              <img
+                class="group"
+                src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/group.png"
+              />
+              <img
+                class="vector"
+                src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/vector.png"
+              />
+              <img
+                class="advanced-option"
+                src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/678a6931768aa8ff775276fb/img/advanced-option.png"
+              />
+            </div>
+            <img
+              class="liking-related"
+              src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/678a6931768aa8ff775276fb/img/liking-related-videos.png"
+            />
+            <img
+              class="number-of-video-per"
+              src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/678a6931768aa8ff775276fb/img/number-of-video-per-keyword.png"
+            />
+
+            <!--
+            <div class="toggle-switch"><div class="handle"></div></div>
+            -->
+
+            <input type="checkbox" class="checkbox1" name="checkbox1" value="{{checked_value1}}" {% if checked_value1 %}checked{% endif %} id="checkbox1" onclick="toggleNumberInput()" >
+
+            <img
+              class="adding-related"
+              src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/678a6931768aa8ff775276fb/img/adding-related-videos-to-watch-later-playlist.png"
+            />
+            <img
+              class="img"
+              src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/678a6931768aa8ff775276fb/img/number-of-video-per-keyword.png"
+            />
+            <!--
+            <div class="handle-wrapper"><div class="handle"></div></div>
+            -->
+            <input type="checkbox" class="checkbox2" name="checkbox2" value="{{checked_value2}}" {% if checked_value2 %}checked{% endif %} id="checkbox2" onclick="toggleNumberInput()" >
+            <img
+              class="subscribing-channels"
+              src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/678a6931768aa8ff775276fb/img/subscribing-channels-with-related-video.png"
+            />
+            <img
+              class="number-of-video-per-2"
+              src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/678a6931768aa8ff775276fb/img/number-of-video-per-keyword.png"
+            />
+            <input type="checkbox" class="checkbox3" name="checkbox3" value="{{checked_value3}}" {% if checked_value3 %}checked{% endif %} id="checkbox3" onclick="toggleNumberInput()">
+
+            <input class="text-field" name="num_vid1" id="num_vid1" value="{{num_vid1}}" type="number" min="0" max="10" step="1" {% if not checkbox1 %}disabled{% endif %}>
+            <div class="text-wrapper"></div>
+            <input class="div-wrapper" name="num_vid2" id="num_vid2" value="{{num_vid2}}" type="number" min="0" max="10" step="1" {% if not checkbox2 %}disabled{% endif %}>
+            <div class="text-wrapper"></div>
+            <input class="text-field-2" name="num_vid3" id="num_vid3" value="{{num_vid3}}"type="number" min="0" max="10" step="1" {% if not checkbox3 %}disabled{% endif %}>
+            <div class="text-wrapper"></div>
+            <!--
+            <div class="toggle-switch-2"><div class="handle"></div></div>
+            -->
+            
+            <div class="save-wrapper">
+              <button type="submit" class="save-button" name="action" value="Save">Save</button>
+            </div>
+
+            <div class="back-wrapper">
+              <a href="{{ url_for('index') }}">
+                  <input type="button" class="back-button"  value="Back" />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="savedData"></div>
+    
+    <script>
+      window.onload = toggleNumberInput;
+      
+      document.getElementById('dataForm').addEventListener('submit', function(event) 
+      
+      {   event.preventDefault();
+  
+          const data = {
+              checkbox1: document.getElementById('checkbox1').checked,
+              checkbox2: document.getElementById('checkbox2').checked,
+              checkbox3: document.getElementById('checkbox3').checked,
+              numberInput1: document.getElementById('num_vid1').value,
+              numberInput2: document.getElementById('num_vid2').value,
+              numberInput3: document.getElementById('num_vid3').value
+          };
+  
+          fetch('/save', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+          })
+
+          .then(response => response.json())
+          .then(data => {
+              console.log('Success:', data);
+              displaySavedData(data);
+              updateFormValues(data);
+          })
+          .catch((error) => {
+              console.error('Error:', error);
+          });
+      });
+  
+      function displaySavedData(data) {
+          document.getElementById('savedData').innerHTML = `
+              <p>Checkbox 1: ${data.checkbox1 ? 'Checked' : 'Unchecked'}</p>
+              <p>Number Input 1: ${data.numberInput1}</p>
+              <p>Checkbox 2: ${data.checkbox2 ? 'Checked' : 'Unchecked'}</p>
+              <p>Number Input 2: ${data.numberInput2}</p>
+              <p>Checkbox 3: ${data.checkbox3 ? 'Checked' : 'Unchecked'}</p>
+              <p>Number Input 3: ${data.numberInput3}</p>
+          `;
+      }
+  
+      function updateFormValues(data) {
+          document.getElementById('checkbox1').checked = data.checkbox1;
+          document.getElementById('checkbox2').checked = data.checkbox2;
+          document.getElementById('checkbox3').checked = data.checkbox3;
+          document.getElementById('num_vid1').value = data.numberInput1;
+          document.getElementById('num_vid2').value = data.numberInput2;
+          document.getElementById('num_vid3').value = data.numberInput3;
+          toggleNumberInput();  // Ensure the number inputs are enabled/disabled based on the checkboxes
+      }
+  
+      function toggleNumberInput() {
+          const checkbox1 = document.getElementById("checkbox1");
+          const numberInput1 = document.getElementById("num_vid1");
+          const checkbox2 = document.getElementById("checkbox2");
+          const numberInput2 = document.getElementById("num_vid2");
+          const checkbox3 = document.getElementById("checkbox3");
+          const numberInput3 = document.getElementById("num_vid3");
+  
+          if (checkbox1.checked) {
+              numberInput1.disabled = false;
+          } else {
+              numberInput1.disabled = true;
+          }
+          if (checkbox2.checked) {
+              numberInput2.disabled = false;
+          } else {
+              numberInput2.disabled = true;
+          }
+          if (checkbox3.checked) {
+              numberInput3.disabled = false;
+          } else {
+              numberInput3.disabled = true;
+          }
+      }
+  
+      
+    </script>
+  
+  </body>
+</html>

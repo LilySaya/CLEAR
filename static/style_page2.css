@@ -1,0 +1,266 @@
+.imac {
+  background-color: #b1f2ee;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 120%;
+}
+
+.imac .div {
+  background-color: #b1f2ee;
+  overflow: hidden;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+}
+
+.imac .overlap-group {
+  position: absolute;
+  width: 1920px;
+  height: 75px;
+  top: 0;
+  left: 3px;
+  background-color: #ffffff30;
+}
+
+.imac .contact-us {
+  position: absolute;
+  width: 111px;
+  height: 18px;
+  top: 28px;
+  left: 1680px;
+}
+
+.imac .check-my-feed {
+  position: absolute;
+  width: 157px;
+  height: 23px;
+  top: 27px;
+  left: 1454px;
+}
+
+.imac .group {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  top: 11px;
+  left: 1839px;
+}
+
+.imac .vector {
+  position: absolute;
+  width: 20px;
+  height: 45px;
+  top: 16px;
+  left: 42px;
+}
+
+.imac .advanced-option {
+  position: absolute;
+  width: 301px;
+  height: 38px;
+  top: 22px;
+  left: 92px;
+}
+
+.imac .liking-related {
+  position: absolute;
+  width: 575px;
+  height: 61px;
+  top: 237px;
+  left: 228px;
+}
+
+.imac .number-of-video-per {
+  position: absolute;
+  width: 695px;
+  height: 53px;
+  top: 333px;
+  left: 248px;
+}
+
+.imac .text-field {
+  top: 324px;
+  display: flex;
+  width: 120px;
+  height: 60px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  position: absolute;
+  left: 1549px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: #bdbdbd;
+}
+
+.imac .text-wrapper {
+  position: relative;
+  flex: 1;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #000000;
+  font-size: var(--single-line-body-base-font-size);
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.imac .div-wrapper {
+  top: 547px;
+  display: flex;
+  width: 120px;
+  height: 60px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  position: absolute;
+  left: 1549px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: #bdbdbd;
+}
+
+.imac .text-field-2 {
+  top: 794px;
+  display: flex;
+  width: 120px;
+  height: 60px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  position: absolute;
+  left: 1549px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: #bdbdbd;
+}
+
+.imac .toggle-switch {
+  position: absolute;
+  width: 160px;
+  height: 72px;
+  top: 230px;
+  left: 1529px;
+  background-color: #bebebe;
+  border-radius: 36px;
+  overflow: hidden;
+}
+
+.imac .checkbox1 {
+  position: absolute;
+  width: 160px;
+  height: 72px;
+  top: 230px;
+  left: 1529px;
+  background-color: #bebebe;
+  border-radius: 36px;
+  overflow: hidden;
+}
+
+.imac .adding-related {
+  position: absolute;
+  width: 1233px;
+  height: 62px;
+  top: 460px;
+  left: 212px;
+}
+
+.imac .img {
+  top: 556px;
+  left: 234px;
+  position: absolute;
+  width: 695px;
+  height: 53px;
+}
+
+
+.imac .checkbox2 {
+  top: 453px;
+  left: 1529px;
+  position: absolute;
+  width: 160px;
+  height: 72px;
+  background-color: #bebebe;
+  border-radius: 36px;
+  overflow: hidden;
+}
+
+.imac .subscribing-channels {
+  position: absolute;
+  width: 1120px;
+  height: 61px;
+  top: 707px;
+  left: 199px;
+}
+
+.imac .number-of-video-per-2 {
+  top: 803px;
+  left: 220px;
+  position: absolute;
+  width: 695px;
+  height: 53px;
+}
+
+
+.imac .checkbox3 {
+  top: 700px;
+  left: 1515px;
+  position: absolute;
+  width: 160px;
+  height: 72px;
+  background-color: #bebebe;
+  border-radius: 36px;
+  overflow: hidden;
+}
+
+.imac .back-wrapper {
+  position: absolute;
+  width: 203px;
+  height: 45px;
+  top: 981px;
+  left: 789px;
+  background-image: url(https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/rectangle-24.png);
+  background-size: 100% 100%;
+}
+
+.back-button {
+  width: 100%; /* Make button fill the entire train-wrapper */
+  height: 100%; /* Make button fill the entire train-wrapper */
+  background: none; /* No background color */
+  border: none; /* Remove border */
+  color: #4a90e2; /* Text color */
+  font-size: 16px; /* Font size for text */
+  cursor: pointer; /* Make it clickable */
+  display: inline-block;
+  text-align: center;
+  font-weight: bold; /* Optional: Make text bold */
+  outline: none; /* Remove outline on focus */
+}
+
+.imac .save-wrapper {
+  position: absolute;
+  width: 203px;
+  height: 45px;
+  top: 881px;
+  left: 789px;
+  background-image: url(https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/rectangle-24.png);
+  background-size: 100% 100%;
+}
+
+.save-button {
+  width: 100%; /* Make button fill the entire train-wrapper */
+  height: 100%; /* Make button fill the entire train-wrapper */
+  background: none; /* No background color */
+  border: none; /* Remove border */
+  color: #4a90e2; /* Text color */
+  font-size: 16px; /* Font size for text */
+  cursor: pointer; /* Make it clickable */
+  display: inline-block;
+  text-align: center;
+  font-weight: bold; /* Optional: Make text bold */
+  outline: none; /* Remove outline on focus */
+}
