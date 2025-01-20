@@ -55,10 +55,13 @@ def submit():
                 like_video(creds, video_id)
 
         #number of videos to add to Watch Later Playlist
-        video_ids_toadd = search_youtube(creds, keyword, num_vid2)
-        if video_ids_toadd:
-            for video_id in video_ids_toadd:
-                like_video(creds, video_id) #CHANGE THIS PLEASE
+        
+        # Number of channels to subscribe
+        channel_ids = search_youtube_channels(creds, keyword, num_vid3)
+        if channel_ids:
+            for channel_id in channel_ids:
+                subscribe_to_channel(creds, channel_id)
+
         
         #number of channels to subscribe
         #Please complete this using variable "num_vid3" (number of channels to subscribe)
@@ -176,6 +179,60 @@ def like_video(credentials, video_id):
             print("Quota exceeded! Stopping further requests.")
             raise
 
+def search_youtube_channels(credentials, query, num_channels):
+    youtube = build("youtube", "v3", credentials=credentials)
+    channel_ids = []
+    next_page_token = None
+
+    while len(channel_ids) < num_channels:
+        request = youtube.search().list(
+            part="snippet",
+            q=query,
+            maxResults=min(num_channels - len(channel_ids), 50),  # Fetch up to 50 results per page
+            type="channel",  # Search for channels instead of videos
+            pageToken=next_page_token,
+        )
+        response = request.execute()
+
+        for item in response.get("items", []):
+            channel_title = item["snippet"]["title"]
+            channel_id = item["id"].get("channelId")
+            if channel_id:
+                channel_ids.append(channel_id)
+                print(f"Channel {len(channel_ids)}: {channel_title}")
+                if len(channel_ids) == num_channels:
+                    break
+
+        # Check if there's another page of results
+        next_page_token = response.get("nextPageToken")
+        if not next_page_token:
+            break
+
+    return channel_ids
+
+def subscribe_to_channel(credentials, channel_id):
+    youtube = build("youtube", "v3", credentials=credentials)
+    try:
+        request = youtube.subscriptions().insert(
+            part="snippet",
+            body={
+                "snippet": {
+                    "resourceId": {
+                        "kind": "youtube#channel",
+                        "channelId": channel_id
+                    }
+                }
+            }
+        )
+        request.execute()
+        print(f"Successfully subscribed to channel ID: {channel_id}")
+    except HttpError as e:
+        error_content = e.content.decode("utf-8")
+        if "quotaExceeded" in error_content:
+            print("Quota exceeded! Stopping further requests.")
+            raise
+        else:
+            print(f"Failed to subscribe to channel: {error_content}")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
