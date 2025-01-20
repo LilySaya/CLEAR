@@ -64,11 +64,12 @@ def submit():
         #Please complete this using variable "num_vid3" (number of channels to subscribe)
     
     session.clear()
+
     return f"""Search for keywords '{', '.join(keyword_list)}' completed. So far, ...
                                             ...{num_vid1} videos have been liked and ...
                                             ...{num_vid2} videos have been added to Watch Later Playlist and ...
                                             ...{num_vid3} channels have been subscribed."""
-
+    # return redirect('https://www.youtube.com/')
     # Trying to lead our user to their youtube
 
 @app.route('/options', methods=['GET','POST'])
