@@ -55,16 +55,22 @@ def submit():
                 like_video(creds, video_id)
 
         #number of videos to add to Watch Later Playlist
-        
-        # Number of channels to subscribe
+        # Create a new playlist (or reuse an existing one)
+        # Number of videos to add to Watch Later Playlist
+        # Replace liking videos with adding to playlist
+
+        # watch_later_playlist_id = "PLGCXOAlKMfTcUaIw1PRjV5nz7m4Q0e_dm"  # Replace with the actual playlist ID
+        # video_ids_to_add = search_youtube(creds, keyword, num_vid2)
+        # if video_ids_to_add:
+        #     for video_id in video_ids_to_add:
+        #         add_to_playlist(creds, video_id, watch_later_playlist_id)
+
+
+        #number of channels to subscribe
         channel_ids = search_youtube_channels(creds, keyword, num_vid3)
         if channel_ids:
             for channel_id in channel_ids:
                 subscribe_to_channel(creds, channel_id)
-
-        
-        #number of channels to subscribe
-        #Please complete this using variable "num_vid3" (number of channels to subscribe)
     
     session.clear()
 
@@ -138,6 +144,7 @@ def authenticate():
     print("Authentication successful!")
     return credentials
 
+### Sub functions for like starts here ### 
 def search_youtube(credentials, query, num_videos):
     youtube = build("youtube", "v3", credentials=credentials)
     video_ids = []
@@ -179,7 +186,37 @@ def like_video(credentials, video_id):
         if "quotaExceeded" in error_content:
             print("Quota exceeded! Stopping further requests.")
             raise
+### Sub functions for like ends here ### 
 
+### Sub functions for add to playlist starts here ### 
+# def add_to_playlist(credentials, video_id, playlist_id):
+#     youtube = build("youtube", "v3", credentials=credentials)
+#     try:
+#         request = youtube.playlistItems().insert(
+#             part="snippet",
+#             body={
+#                 "snippet": {
+#                     "playlistId": playlist_id,
+#                     "resourceId": {
+#                         "kind": "youtube#video",
+#                         "videoId": video_id
+#                     }
+#                 }
+#             }
+#         )
+#         response = request.execute()
+#         print(f"Added video ID {video_id} to playlist ID {playlist_id}")
+#         return response
+#     except HttpError as e:
+#         error_content = e.content.decode("utf-8")
+#         if "quotaExceeded" in error_content:
+#             print("Quota exceeded! Stopping further requests.")
+#             raise
+#         else:
+#             print(f"Failed to add video to playlist: {error_content}")
+### Sub functions for add to playlist ends here ### 
+
+### Sub functions for subscribe the channel starts here ### 
 def search_youtube_channels(credentials, query, num_channels):
     youtube = build("youtube", "v3", credentials=credentials)
     channel_ids = []
@@ -234,6 +271,7 @@ def subscribe_to_channel(credentials, channel_id):
             raise
         else:
             print(f"Failed to subscribe to channel: {error_content}")
+### Sub functions for subscribe the channel ends here ### 
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
