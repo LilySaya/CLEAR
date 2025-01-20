@@ -37,9 +37,10 @@ def submit():
     # Split keywords by commas and strip whitespace
     keyword_list = [keyword.strip() for keyword in keywords.split(',')]
 
-    num_vid1 = session.get('num_vid1', None) 
-    num_vid2 = session.get('num_vid2', None) 
-    num_vid3 = session.get('num_vid3', None) 
+    
+    num_vid1 = int(session.get('num_vid1', None))
+    num_vid2 = int(session.get('num_vid2', None))
+    num_vid3 = int(session.get('num_vid3', None))
     
     
     # Authenticate the user
@@ -67,6 +68,8 @@ def submit():
                                             ...{num_vid1} videos have been liked and ...
                                             ...{num_vid2} videos have been added to Watch Later Playlist and ...
                                             ...{num_vid3} channels have been subscribed."""
+
+    # Trying to lead our user to their youtube
 
 @app.route('/options', methods=['GET','POST'])
 
