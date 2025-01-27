@@ -30,12 +30,20 @@ pip install flask # This is the backend framework
 pip install google-auth-oauthlib google-api-python-client google-auth # Pacakges for installing youtube api call
 ```
 
-# Excution
-You can host the server in your local by executing below command.
+# Run
+You can host the server locally by executing below command.
 ``` bash
 python connectingtoOathtesting_ratelikeall_web_in_use.py
 ```
 You can use python debug(F5) button also.
 
-Then, access the hosted webpage via localhost:5000
+Then, access the hosted webpage via [localhost:5000](localhost:5000)
+
 Press `ctrl+c` to quit.
+
+To make the server publically available, you need a DNS service and port forwarding to port 5000 locally. 
+
+# Hosted service
+Alternativelly, you can access our hosted service at this link:
+
+[link](melnikov.tplinkdns.com)
