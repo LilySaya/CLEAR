@@ -9,7 +9,7 @@ body {
   width: 120%; /* Expand the content area to simulate 80% zoom (1 / 0.8 = 1.25) */
   height: 120%; /* Expand the height proportionally */
   transform-origin: top left; /* Ensure scaling starts from the top-left corner */
-  transform: scale(0.89); /* Scale down to 80% */
+  transform: scale(0.915); /* Scale down to 80% */
   margin: 0; /* Remove default margins */
   overflow: hidden; /* Prevent scrollbars from appearing */
 }
