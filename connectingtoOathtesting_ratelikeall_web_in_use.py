@@ -66,7 +66,6 @@ def submit():
         #     for video_id in video_ids_to_add:
         #         add_to_playlist(creds, video_id, watch_later_playlist_id)
 
-
         #number of channels to subscribe
         channel_ids = search_youtube_channels(creds, keyword, num_vid3)
         if channel_ids:
@@ -138,7 +137,7 @@ def options():
 
 def authenticate():
     flow = InstalledAppFlow.from_client_secrets_file(
-        "./json_keys/client_secret_YoutubeDataAPIv320250115_desktop.json", SCOPES
+        "./json_keys/desktop/client_secret_YoutubeDataAPIv320250115_desktop.json", SCOPES
     )
     credentials = flow.run_local_server(port=0)
     print("Authentication successful!")
