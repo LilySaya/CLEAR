@@ -26,8 +26,8 @@ def submit():
     # Set default values for num_vid1, num_vid2, and num_vid3
     if 'num_vid1' not in session:
         session['num_vid1'] = 1 #Number of videos to like
-    if 'num_vid2' not in session:
-        session['num_vid2'] = 1 #Number of videos to add to watch later playlist
+    #if 'num_vid2' not in session:
+    #    session['num_vid2'] = 1 #Number of videos to add to watch later playlist
     if 'num_vid3' not in session:
         session['num_vid3'] = 0 #Number of channels to subscribe
 
@@ -39,11 +39,12 @@ def submit():
 
     
     num_vid1 = int(session.get('num_vid1', None))
-    num_vid2 = int(session.get('num_vid2', None))
+    #num_vid2 = int(session.get('num_vid2', None))
     num_vid3 = int(session.get('num_vid3', None))
     
     
     # Authenticate the user
+
     creds = authenticate()
     
     # Process each keyword
@@ -76,7 +77,6 @@ def submit():
 
     return f"""Search for keywords '{', '.join(keyword_list)}' completed. So far, ...
                                             ...{num_vid1} videos have been liked and ...
-                                            ...{num_vid2} videos have been added to Watch Later Playlist and ...
                                             ...{num_vid3} channels have been subscribed."""
     # return redirect('https://www.youtube.com/')
     # Trying to lead our user to their youtube
@@ -88,27 +88,27 @@ def options():
     # Set default values if session is empty (first-time visit)
     if 'checkbox1' not in session:
         session['checkbox1'] = True
-    if 'checkbox2' not in session:
-        session['checkbox2'] = True
+    #if 'checkbox2' not in session:
+    #    session['checkbox2'] = True
     if 'checkbox3' not in session:
         session['checkbox3'] = False
     if 'num_vid1' not in session:
         session['num_vid1'] = 1
-    if 'num_vid2' not in session:
-        session['num_vid2'] = 1
+    #if 'num_vid2' not in session:
+    #    session['num_vid2'] = 1
     if 'num_vid3' not in session:
         session['num_vid3'] = 0
 
 
     if request.method == 'POST':
         session['checkbox1'] = request.form.get('checkbox1') 
-        session['checkbox2'] = request.form.get('checkbox2') 
+        #session['checkbox2'] = request.form.get('checkbox2') 
         session['checkbox3'] = request.form.get('checkbox3') 
 
         if 'checkbox1' not in request.form:
             session['num_vid1'] = 0
-        if 'checkbox2' not in request.form:
-            session['num_vid2'] = 0
+        #if 'checkbox2' not in request.form:
+            #session['num_vid2'] = 0
         if 'checkbox3' not in request.form:
             session['num_vid3'] = 0
         
@@ -118,9 +118,9 @@ def options():
             session['num_vid1'] = num_vid1
         
         # If checkbox2 is checked, store the corresponding num_vid2 value
-        if 'checkbox2' in request.form:
-            num_vid2 = request.form.get('num_vid2',session['num_vid2']) # Default to 0 if no value is provided
-            session['num_vid2'] = num_vid2
+        #if 'checkbox2' in request.form:
+        #    num_vid2 = request.form.get('num_vid2',session['num_vid2']) # Default to 0 if no value is provided
+        #    session['num_vid2'] = num_vid2
         
         # If checkbox3 is checked, store the corresponding num_vid3 value
         if 'checkbox3' in request.form:
@@ -131,8 +131,8 @@ def options():
 
 
     return render_template('options.html',num_vid1=session['num_vid1'],
-                           num_vid2=session['num_vid2'],num_vid3=session['num_vid3'],
-                           checked_value1=session['checkbox1'], checked_value2=session['checkbox2'],
+                           num_vid3=session['num_vid3'],
+                           checked_value1=session['checkbox1'],
                            checked_value3=session['checkbox3'])
 
 

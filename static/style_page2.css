@@ -124,7 +124,7 @@
 }
 
 .imac .text-field-2 {
-  top: 794px;
+  top: 594px;
   display: flex;
   width: 120px;
   height: 60px;
@@ -193,12 +193,12 @@
   position: absolute;
   width: 1120px;
   height: 61px;
-  top: 707px;
+  top: 507px;
   left: 199px;
 }
 
 .imac .number-of-video-per-2 {
-  top: 803px;
+  top: 603px;
   left: 220px;
   position: absolute;
   width: 695px;
@@ -207,7 +207,7 @@
 
 
 .imac .checkbox3 {
-  top: 700px;
+  top: 507px;
   left: 1515px;
   position: absolute;
   width: 160px;
@@ -243,10 +243,10 @@
 
 .imac .save-wrapper {
   position: absolute;
-  width: 203px;
-  height: 45px;
-  top: 881px;
-  left: 789px;
+  width: 303px;
+  height: 95px;
+  top: 781px;
+  left: 740px;
   background-image: url(https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/rectangle-24.png);
   background-size: 100% 100%;
 }
@@ -257,7 +257,7 @@
   background: none; /* No background color */
   border: none; /* Remove border */
   color: #4a90e2; /* Text color */
-  font-size: 16px; /* Font size for text */
+  font-size: 36px; /* Font size for text */
   cursor: pointer; /* Make it clickable */
   display: inline-block;
   text-align: center;
