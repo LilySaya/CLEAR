@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 120%;
+  width: 1920px; /* Base design width */
+  height: 1080px; /* Base design height */
 }
 
 .imac .div {
@@ -221,7 +222,7 @@
   position: absolute;
   width: 203px;
   height: 45px;
-  top: 981px;
+  top: 951px;
   left: 789px;
   background-image: url(https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/rectangle-24.png);
   background-size: 100% 100%;
