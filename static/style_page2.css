@@ -88,6 +88,7 @@
   display: flex;
   width: 120px;
   height: 60px;
+  font-size: 36px; /* Set the size of the text inside the input field */
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
@@ -132,6 +133,7 @@
   display: flex;
   width: 120px;
   height: 60px;
+  font-size: 36px; /* Set the size of the text inside the input field */
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
@@ -223,10 +225,20 @@
 
 .imac .back-wrapper {
   position: absolute;
-  width: 203px;
-  height: 45px;
-  top: 951px;
-  left: 789px;
+  width: 200px;
+  height: 80px;
+  top: 900px;
+  left: 860px;
+  background-image: url(https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/rectangle-24.png);
+  background-size:  100% 100%;
+}
+
+.imac .save-wrapper {
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  top: 800px;
+  left: 860px;
   background-image: url(https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/rectangle-24.png);
   background-size: 100% 100%;
 }
@@ -237,22 +249,12 @@
   background: none; /* No background color */
   border: none; /* Remove border */
   color: #4a90e2; /* Text color */
-  font-size: 16px; /* Font size for text */
+  font-size: 36px; /* Font size for text */
   cursor: pointer; /* Make it clickable */
   display: inline-block;
   text-align: center;
   font-weight: bold; /* Optional: Make text bold */
   outline: none; /* Remove outline on focus */
-}
-
-.imac .save-wrapper {
-  position: absolute;
-  width: 303px;
-  height: 95px;
-  top: 781px;
-  left: 740px;
-  background-image: url(https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/rectangle-24.png);
-  background-size: 100% 100%;
 }
 
 .save-button {
