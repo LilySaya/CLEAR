@@ -66,7 +66,6 @@ def submit():
         #     for video_id in video_ids_to_add:
         #         add_to_playlist(creds, video_id, watch_later_playlist_id)
 
-
         #number of channels to subscribe
         channel_ids = search_youtube_channels(creds, keyword, num_vid3)
         if channel_ids:
