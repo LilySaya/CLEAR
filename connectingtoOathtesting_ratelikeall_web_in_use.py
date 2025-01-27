@@ -138,7 +138,7 @@ def options():
 
 def authenticate():
     flow = InstalledAppFlow.from_client_secrets_file(
-        "./json_keys/client_secret_myproject20250117_desktop.json", SCOPES
+        "./json_keys/client_secret_YoutubeDataAPIv320250115_desktop.json", SCOPES
     )
     credentials = flow.run_local_server(port=0)
     print("Authentication successful!")
