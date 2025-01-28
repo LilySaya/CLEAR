@@ -34,16 +34,86 @@
                 />
               </div>
               <div class="overlap-group">
+                <!-- Input Field -->
                 <div class="input-field">
                   <div class="input-field-2">
-                    <input type="text" class="input" id = "query" name = "query" placeholder="Enter Keywords Here" />
+                    <input
+                      type="text"
+                      class="input"
+                      id="query"
+                      name="query"
+                      placeholder="Enter Keywords Here"
+                    />
                   </div>
                 </div>
+              
+                <!-- Suggestions List -->
+                <ul class="suggestions">
+                  <li class="suggestion-item">Cute Cats</li>
+                  <li class="suggestion-item">Cute Cats</li>
+                  <li class="suggestion-item">Algorithms</li>
+                  <li class="suggestion-item">Non-Linear Control Theory</li>
+                </ul>
+              
+                <!-- Image -->
                 <img
                   class="group"
                   src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/group-1.png"
                 />
               </div>
+              
+              <!-- Styling -->
+              <style>
+                .overlap-group {
+                  position: relative;
+                  width: 100%;
+                }
+              
+                .input-field {
+                  margin-bottom: 10px;
+                }
+              
+                .suggestions {
+                  margin-top: 5px;
+                  list-style: none;
+                  padding: 0;
+                }
+              
+                .suggestion-item {
+                  cursor: pointer;
+                  padding: 16px;
+                  background-color: #f0f0f0;
+                  margin-bottom: 8px;
+                  border-radius: 4px;
+                  transition: background-color 0.3s;
+                }
+              
+                .suggestion-item:hover {
+                  background-color: #d0d0d0;
+                }
+              
+                .group {
+                  margin-top: 20px;
+                  width: 100px; /* Adjust as needed */
+                  height: auto;
+                }
+              </style>
+              
+              <!-- JavaScript -->
+              <script>
+                // Get the input field and suggestion items
+                const inputField = document.getElementById("query");
+                const suggestionItems = document.querySelectorAll(".suggestion-item");
+              
+                // Add click event listener to each suggestion
+                suggestionItems.forEach((item) => {
+                  item.addEventListener("click", () => {
+                    // Set the clicked suggestion as the input field value
+                    inputField.value = item.textContent;
+                  });
+                });
+              </script>
+              
               <img
                 class="LEAR"
                 src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/lear.png"
@@ -57,24 +127,27 @@
                 <input type="submit" class="train-button"  value="Train!" />
               </div>
             
-              <div class="cute-cats-wrapper">
+              <!-- <div class="cute-cats-wrapper">
+                <input type="button" class="cute-cats-button"  value="Cute Cats" />
                 <img
                   class="cute-cats"
                   src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/cute-cats.png"
                 />
               </div>
               <div class="algorithms-wrapper">
+                <input type="button" class="algorithms-button"  value="Algorithms" />
                 <img
                   class="algorithms"
                   src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/algorithms.png"
                 />
               </div>
               <div class="non-linear-control-wrapper">
+                <input type="button" class="non-linear-control-button"  value="Non-Linear Control Theory" />
                 <img
                   class="non-linear-control"
                   src="https://cdn.animaapp.com/projects/6789da3508dbe99a5a6be171/releases/6789e0edee41831dbf49a350/img/non-linear-control-theory.png"
                 />
-              </div>
+              </div> -->
               
               <div class="overlap-group-2">
                 <!--
