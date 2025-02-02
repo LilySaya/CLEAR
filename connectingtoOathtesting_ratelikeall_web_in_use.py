@@ -177,13 +177,25 @@ def options():
                            checked_value3=session['checkbox3'])
 
 
+# def authenticate():
+#     flow = InstalledAppFlow.from_client_secrets_file(
+#         "./json_keys/desktop/client_secret_YoutubeDataAPIv320250115_desktop.json", SCOPES
+#     )
+#     credentials = flow.run_local_server(port=0)
+#     print("Authentication successful!")
+#     return credentials
+
 def authenticate():
-    flow = InstalledAppFlow.from_client_secrets_file(
-        "./json_keys/desktop/client_secret_YoutubeDataAPIv320250115_desktop.json", SCOPES
+    with open(CLIENT_SECRETS_FILE) as f:
+        client_config = json.load(f)
+
+    flow = Flow.from_client_config(
+        client_config=client_config,
+        scopes=SCOPES,
+        redirect_uri=REDIRECT_URI  # Use Flask's redirect URI
     )
-    credentials = flow.run_local_server(port=0)
-    print("Authentication successful!")
-    return credentials
+
+    return flow
 
 ### Sub functions for like starts here ### 
 def search_youtube(credentials, query, num_videos):
