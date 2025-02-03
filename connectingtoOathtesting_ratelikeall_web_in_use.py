@@ -21,7 +21,7 @@ API_VERSION = 'v3'
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 REDIRECT_URI = 'https://melnikov.tplinkdns.com/oauth2callback'
 
-# Flow 객체 생성 함수
+# Flow
 def get_flow():
     with open(CLIENT_SECRETS_FILE) as f:
         client_config = json.load(f)
@@ -48,10 +48,11 @@ def authorize():
     
     # 상태 값 세션 저장 (CSRF 방지)
     session['state'] = state
+    
     return redirect(authorization_url)
 
 # Part of codes for requiring OAuth from user 
-@app.route('/oauth2callback')
+@app.route('/oauth2callback', methods=['GET', 'POST'])
 def oauth2callback():
     # 상태 값 검증
     if 'state' not in session:
@@ -329,6 +330,6 @@ def subscribe_to_channel(credentials, channel_id):
 ### Sub functions for subscribe the channel ends here ### 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port=443, ssl_context=("ssl_certificate/cert.pem", "ssl_certificate/key.pem"), debug=True)
 
 
