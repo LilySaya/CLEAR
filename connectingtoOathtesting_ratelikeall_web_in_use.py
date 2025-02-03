@@ -19,7 +19,7 @@ API_SERVICE_NAME = 'youtube'
 API_VERSION = 'v3'
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-REDIRECT_URI = 'http://melnikov.tplinkdns.com/oauth2callback'
+REDIRECT_URI = 'https://melnikov.tplinkdns.com/oauth2callback'
 
 # Flow 객체 생성 함수
 def get_flow():
