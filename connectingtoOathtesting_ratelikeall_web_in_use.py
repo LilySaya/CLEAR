@@ -19,7 +19,7 @@ API_SERVICE_NAME = 'youtube'
 API_VERSION = 'v3'
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-REDIRECT_URI = 'https://melnikov.tplinkdns.com/oauth2callback'
+REDIRECT_URI = 'https://melnikov.tplinkdns.com:8443/oauth2callback'
 
 # Flow
 def get_flow():
@@ -29,6 +29,7 @@ def get_flow():
     return Flow.from_client_config(
         client_config=client_config,
         scopes=SCOPES,
+        # redirect_uri=REDIRECT_URI
         redirect_uri=REDIRECT_URI
     )
 
@@ -86,6 +87,10 @@ def submit_handler():
     if 'credentials' not in session:
         session['query'] = request.form['query']
         return redirect(url_for('authorize'))
+
+    num_vid1 = int(session.get('num_vid1', 1))
+    #num_vid2 = int(session.get('num_vid2', None))
+    num_vid3 = int(session.get('num_vid3', 0))
     
     credentials_data = session['credentials']
     credentials = Credentials(
@@ -105,25 +110,25 @@ def submit_handler():
     keyword_list = [keyword.strip() for keyword in keywords.split(',')]
     
     # 기본값 설정
-    session.setdefault('num_vid1', 1)
-    session.setdefault('num_vid3', 0)
+    # session.setdefault('num_vid1', 1)
+    # session.setdefault('num_vid3', 0)
     
     # 각 키워드 처리
     for keyword in keyword_list:
         # 비디오 좋아요 처리
-        video_ids = search_youtube(credentials, keyword, session['num_vid1'])
+        video_ids = search_youtube(credentials, keyword, num_vid1)
         for video_id in video_ids:
             like_video(credentials, video_id)
         
         # 채널 구독 처리
-        channel_ids = search_youtube_channels(credentials, keyword, session['num_vid3'])
+        channel_ids = search_youtube_channels(credentials, keyword, num_vid3)
         for channel_id in channel_ids:
             subscribe_to_channel(credentials, channel_id)
     
     session.clear()
     return f"""Search for keywords '{', '.join(keyword_list)}' completed. So far, ...
-                                            ...{session['num_vid1']} videos have been liked and ...
-                                            ...{session['num_vid3']} channels have been subscribed."""
+                                            ...{num_vid1} videos have been liked and ...
+                                            ...{num_vid3} channels have been subscribed."""
     # return f"처리 완료: {', '.join(keyword_list)}"
 
 @app.route('/options', methods=['GET','POST'])
@@ -330,6 +335,6 @@ def subscribe_to_channel(credentials, channel_id):
 ### Sub functions for subscribe the channel ends here ### 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=443, ssl_context=("ssl_certificate/cert.pem", "ssl_certificate/key.pem"), debug=True)
+    app.run(host='192.168.68.50', port=8443, ssl_context=("ssl_certificate/cert.pem", "ssl_certificate/key.pem"), debug=True)
 
 
