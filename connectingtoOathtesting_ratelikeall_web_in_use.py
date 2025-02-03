@@ -10,7 +10,7 @@ app = Flask(__name__)
 # No specific reason that I add this. ChatGPT ask me to do this. 
 app.secret_key = os.urandom(24)
 
-CLIENT_SECRETS_FILE = "./json_keys/desktop/client_secret_YoutubeDataAPIv320250115_desktop.json"
+CLIENT_SECRETS_FILE = "json_keys/web/client_secret_YoutubeDataAPIv320250115_web.json"
 SCOPES = [
     "https://www.googleapis.com/auth/youtube.readonly",
     "https://www.googleapis.com/auth/youtube.force-ssl"
