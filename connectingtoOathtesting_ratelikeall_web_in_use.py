@@ -19,7 +19,7 @@ API_SERVICE_NAME = 'youtube'
 API_VERSION = 'v3'
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-REDIRECT_URI = 'http://localhost:5000/oauth2callback'
+REDIRECT_URI = 'http://melnikov.tplinkdns.com/oauth2callback'
 
 # Flow 객체 생성 함수
 def get_flow():
@@ -87,7 +87,6 @@ def submit_handler():
         return redirect(url_for('authorize'))
     
     credentials_data = session['credentials']
-    credentials_data = session['credentials']
     credentials = Credentials(
         token=credentials_data['token'],
         refresh_token=credentials_data['refresh_token'],
@@ -121,7 +120,10 @@ def submit_handler():
             subscribe_to_channel(credentials, channel_id)
     
     session.clear()
-    return f"처리 완료: {', '.join(keyword_list)}"
+    return f"""Search for keywords '{', '.join(keyword_list)}' completed. So far, ...
+                                            ...{session['num_vid1']} videos have been liked and ...
+                                            ...{session['num_vid3']} channels have been subscribed."""
+    # return f"처리 완료: {', '.join(keyword_list)}"
 
 @app.route('/options', methods=['GET','POST'])
 def options():
