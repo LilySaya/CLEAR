@@ -54,9 +54,9 @@ Then, access the hosted webpage via [localhost:5000](localhost:5000)
 
 Press `ctrl+c` to quit.
 
-To make the server publically available, you need a DNS service and port forwarding to port 5000 locally. 
+To make the server publically available, you need a DNS service and port forwarding to port 8443 locally for using https. 
 
 # Hosted service
 Alternativelly, you can access our hosted service at this link:
 
-[link](melnikov.tplinkdns.com)
+[link](https://melnikov.tplinkdns.com:8443)
