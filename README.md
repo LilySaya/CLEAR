@@ -33,12 +33,12 @@ pip install google-auth-oauthlib google-api-python-client google-auth # Pacakges
 ## Define Authentication Keys
 This app requires google cloud OAuth 2.0 keys for authentication. To work locally, use a desktop type key. For a hosted server, use a web application type key. 
 
-Then, define the authenticate function to read the json file:
+Then, define the authenticate function to read the relevant json file:
 
 ```
 def authenticate():
     flow = InstalledAppFlow.from_client_secrets_file(
-        "./json_keys/client_secret_YoutubeDataAPIv320250115_desktop.json", SCOPES
+        "desktop or server key json.json", SCOPES
     )
 ```
 
